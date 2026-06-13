@@ -1,26 +1,165 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* ── Setnou · paleta Candy Pop (solo colores) ── */
+  --color-electric: #0075FF;
+  --color-sky: #00C0FF;
+  --color-magenta: #FF4FD8;
+  --color-gold: #FFB703;
+  --color-ink: #1A1B25;
+  --color-paper: #FAFAFF;
+
+  /* Mapeo a tokens shadcn (para los componentes cult-ui/shadcn) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-heading: var(--font-display);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Superficies y texto */
+  --background: #FAFAFF;
+  --foreground: #1A1B25;
+  --card: #FFFFFF;
+  --card-foreground: #1A1B25;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1B25;
+  --primary: #1A1B25;
+  --primary-foreground: #FAFAFF;
+  --secondary: #EEEEF6;
+  --secondary-foreground: #1A1B25;
+  --muted: #EEEEF6;
+  --muted-foreground: #5B5C6B;
+  --accent: #FF4FD8;
+  --accent-foreground: #1A1B25;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(26, 27, 37, 0.14);
+  --input: rgba(26, 27, 37, 0.14);
+  --ring: #0075FF;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ════════════════════════════════════════
+   Utilidades Setnou
+   ════════════════════════════════════════ */
+
+/* Selección con color de marca */
+::selection {
+  background: #FF4FD8;
+  color: #1A1B25;
+}
+
+/* Subrayado/resalte con bloque de color tras el texto */
+.highlight {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.15em;
+}
+
+/* Subrayado grueso magenta (efecto rotulador bajo el texto) */
+.u-magenta {
+  background-image: linear-gradient(var(--color-magenta), var(--color-magenta));
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  background-size: 100% 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Borde grueso estilo "sticker" para tarjetas atrevidas */
+.card-pop {
+  border: 2px solid var(--foreground);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease,
+    color 180ms ease;
+}
+.card-pop:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 0 var(--foreground);
+}
+
+/* Botón "pop" con sombra dura desplazada */
+.btn-pop {
+  border: 2px solid var(--foreground);
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease,
+    color 140ms ease;
+  box-shadow: 4px 4px 0 0 var(--foreground);
+}
+.btn-pop:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--foreground);
+}
+.btn-pop:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--foreground);
+}
+
+/* Marquee infinito */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Reveal al hacer scroll (activado por JS con .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-marquee { animation: none; }
+  .card-pop:hover, .btn-pop:hover { transform: none; }
 }
