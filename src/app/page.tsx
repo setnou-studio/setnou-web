@@ -41,21 +41,45 @@ const SERVICIOS = [
 const PROYECTOS = [
   {
     pill: "Diseño + SEO",
-    title: "Mirall Blau",
-    desc: "Web accesible y posicionamiento local para un centro de actividades para personas con discapacidad.",
+    title: "Jenifer Martínez",
+    desc: "Web de marca personal con captación de clientes y posicionamiento local.",
+    url: "https://www.jenifermartinez.com",
     block: "bg-electric",
   },
   {
     pill: "Diseño web",
-    title: "Jenifer Quiroterapias",
-    desc: "Web con sistema de reservas online y posicionamiento local para un centro de quiromasaje y terapias.",
+    title: "Residència Jardí Xerta",
+    desc: "Web para una residencia geriátrica con información de servicios e instalaciones.",
+    url: "https://www.residenciajardixerta.com",
     block: "bg-magenta",
   },
   {
-    pill: "SEO · Optimización",
+    pill: "Diseño + SEO",
     title: "Projecting",
-    desc: "Rediseño y arquitectura SEO para un estudio de proyectos de ingeniería y construcción.",
+    desc: "Web corporativa para un estudio de proyectos de ingeniería y construcción.",
+    url: "https://www.projecting.es",
     block: "bg-gold",
+  },
+  {
+    pill: "Diseño web",
+    title: "Sunset Energía",
+    desc: "Web para una empresa de energía solar y eficiencia energética.",
+    url: "https://www.sunsetenergia.com",
+    block: "bg-sky",
+  },
+  {
+    pill: "Diseño + SEO",
+    title: "Caza Facturas",
+    desc: "Web para un servicio de ahorro y comparación de facturas.",
+    url: "https://www.cazafacturas.com",
+    block: "bg-electric",
+  },
+  {
+    pill: "Diseño web",
+    title: "ADN Blaugrana",
+    desc: "Web de contenido y comunidad para aficionados al fútbol.",
+    url: "https://www.adnblaugrana.com",
+    block: "bg-magenta",
   },
 ];
 
@@ -244,7 +268,14 @@ export default function Home() {
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {PROYECTOS.map((p) => (
-                <article key={p.title} className="reveal card-pop group flex flex-col overflow-hidden rounded-2xl bg-card">
+                <a
+                  key={p.title}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ver el proyecto ${p.title} (se abre en otra pestaña)`}
+                  className="reveal card-pop group flex flex-col overflow-hidden rounded-2xl bg-card"
+                >
                   <div className={`relative h-52 ${p.block}`}>
                     <span className="absolute left-4 top-4 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink">
                       {p.pill}
@@ -254,8 +285,11 @@ export default function Home() {
                   <div className="flex flex-col gap-2 p-6">
                     <h3 className="font-display text-2xl font-bold tracking-tight">{p.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+                    <span className="mt-1 text-sm font-semibold text-electric">
+                      {p.url.replace("https://", "")}
+                    </span>
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </div>
