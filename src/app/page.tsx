@@ -3,6 +3,7 @@ import { Nav } from "@/components/site/nav";
 import { Stats } from "@/components/site/stats";
 import { ContactButton } from "@/components/site/contact-button";
 import { ContactModal, ContactTrigger } from "@/components/site/contact-modal";
+import { CookieConsent } from "@/components/site/cookie-consent";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { Logo } from "@/components/site/logo";
 
@@ -106,7 +107,7 @@ const JSON_LD = {
   description:
     "Estudio de diseño web, SEO y estrategia digital en Barcelona. Webs a medida que convierten visitas en clientes.",
   url: "https://setnou.studio",
-  email: "hola@setnou.studio",
+  email: "hola@setnou.com",
   image: "https://setnou.studio/logo.svg",
   logo: "https://setnou.studio/logo.svg",
   priceRange: "€€",
@@ -357,7 +358,7 @@ export default function Home() {
               <a href="#servicios" className="transition-colors hover:text-magenta">Servicios</a>
               <a href="#portfolio" className="transition-colors hover:text-magenta">Portfolio</a>
               <a href="#nosotros" className="transition-colors hover:text-magenta">Nosotros</a>
-              <a href="mailto:hola@setnou.studio" className="transition-colors hover:text-magenta">hola@setnou.studio</a>
+              <a href="mailto:hola@setnou.com" className="transition-colors hover:text-magenta">hola@setnou.com</a>
             </nav>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-paper/50">
@@ -373,6 +374,7 @@ export default function Home() {
       <ScrollReveal />
       <ContactButton />
       <ContactModal />
+      <CookieConsent />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { X, ArrowRight } from "lucide-react";
+import { X, MessageCircle, Mail } from "lucide-react";
 
 const EVENT = "setnou:open-contact";
 
@@ -62,20 +62,47 @@ export function ContactModal() {
     };
   }, [open]);
 
+  // Datos de contacto de Setnou
+  const WHATSAPP = "34674743999"; // +34 674 743 999
+  const EMAIL = "hola@setnou.com";
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function getData() {
+    const fd = new FormData(formRef.current!);
+    return {
+      nombre: String(fd.get("nombre") || ""),
+      tel: String(fd.get("tel") || ""),
+      email: String(fd.get("email") || ""),
+      empresa: String(fd.get("empresa") || ""),
+    };
+  }
+
+  // Envío por WhatsApp (canal principal)
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const nombre = String(fd.get("nombre") || "");
-    const tel = String(fd.get("tel") || "");
-    const email = String(fd.get("email") || "");
-    const empresa = String(fd.get("empresa") || "");
-
-    // Sin backend: componemos un email con los datos del lead.
-    const body = encodeURIComponent(
-      `Nombre: ${nombre}\nTeléfono: ${tel}\nEmail: ${email}\n\nSobre la empresa:\n${empresa}`
+    const d = getData();
+    const msg = encodeURIComponent(
+      `Hola Setnou 👋 Soy ${d.nombre}.\nTeléfono: ${d.tel}\nEmail: ${d.email}\n\nSobre mi empresa:\n${d.empresa}`
     );
-    window.location.href = `mailto:hola@setnou.studio?subject=${encodeURIComponent(
-      "Nuevo proyecto — " + nombre
+    window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener");
+    setSent(true);
+  }
+
+  // Envío por email (alternativa)
+  function sendEmail() {
+    const form = formRef.current;
+    if (!form) return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const d = getData();
+    const body = encodeURIComponent(
+      `Nombre: ${d.nombre}\nTeléfono: ${d.tel}\nEmail: ${d.email}\n\nSobre la empresa:\n${d.empresa}`
+    );
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+      "Nuevo proyecto — " + d.nombre
     )}&body=${body}`;
     setSent(true);
   }
@@ -120,8 +147,8 @@ export function ContactModal() {
               Gracias, te escribimos enseguida.
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Hemos abierto tu correo con los datos. Si prefieres, escríbenos por
-              WhatsApp y empezamos hoy mismo.
+              Hemos preparado tu mensaje con los datos. Termina de enviarlo en la
+              ventana que se ha abierto y te contestamos enseguida.
             </p>
           </div>
         ) : (
@@ -140,7 +167,7 @@ export function ContactModal() {
               Te respondemos en menos de 24 h con los siguientes pasos.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
               <label className="flex flex-col gap-1.5 text-sm font-medium">
                 Nombre
                 <input
@@ -162,7 +189,7 @@ export function ContactModal() {
                     type="tel"
                     required
                     autoComplete="tel"
-                    placeholder="600 000 000"
+                    placeholder="674 743 999"
                     className="rounded-xl border-2 border-ink bg-card px-4 py-3 text-base font-normal outline-none focus:border-magenta"
                   />
                 </label>
@@ -190,12 +217,21 @@ export function ContactModal() {
                 />
               </label>
 
-              <button
-                type="submit"
-                className="btn-pop mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-paper"
-              >
-                Enviar <ArrowRight className="size-5" />
-              </button>
+              <div className="mt-1 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="submit"
+                  className="btn-pop inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-magenta px-6 py-3.5 text-base font-semibold text-ink"
+                >
+                  <MessageCircle className="size-5" /> Enviar por WhatsApp
+                </button>
+                <button
+                  type="button"
+                  onClick={sendEmail}
+                  className="btn-pop inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-base font-semibold text-paper"
+                >
+                  <Mail className="size-5" /> Enviar por email
+                </button>
+              </div>
             </form>
           </>
         )}
