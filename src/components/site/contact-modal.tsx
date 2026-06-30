@@ -217,21 +217,19 @@ export function ContactModal() {
                 />
               </label>
 
-              <div className="mt-1 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="submit"
-                  className="btn-pop inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-magenta px-6 py-3.5 text-base font-semibold text-ink"
-                >
-                  <MessageCircle className="size-5" /> Enviar por WhatsApp
-                </button>
-                <button
-                  type="button"
-                  onClick={sendEmail}
-                  className="btn-pop inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-base font-semibold text-paper"
-                >
-                  <Mail className="size-5" /> Enviar por email
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="btn-pop mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-magenta px-6 py-4 text-base font-semibold text-ink"
+              >
+                <MessageCircle className="size-5" /> Enviar por WhatsApp
+              </button>
+              <button
+                type="button"
+                onClick={sendEmail}
+                className="-mt-1 inline-flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-ink hover:underline"
+              >
+                <Mail className="size-4" /> Prefiero enviarlo por email
+              </button>
             </form>
           </>
         )}
