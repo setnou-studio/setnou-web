@@ -214,7 +214,7 @@ export function ContactModal() {
                     type="tel"
                     required
                     autoComplete="tel"
-                    placeholder="674 743 999"
+                    placeholder="Tu teléfono"
                     className="rounded-xl border-2 border-ink bg-card px-4 py-3 text-base font-normal outline-none focus:border-magenta"
                   />
                 </label>
