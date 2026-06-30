@@ -62,9 +62,13 @@ export function ContactModal() {
     };
   }, [open]);
 
-  // Datos de contacto de Setnou
-  const WHATSAPP = "34674743999"; // +34 674 743 999
-  const EMAIL = "hola@setnou.com";
+  // ── Datos de contacto de Setnou ──
+  const WHATSAPP = "34627411942"; // +34 627 41 19 42 (chat de WhatsApp)
+  const EMAIL_TO = "hola@setnou.com"; // destinatario principal
+  const EMAIL_CC = "cristian@setnou.com"; // copia
+  // Clave gratuita de Web3Forms para enviar el lead por email automáticamente.
+  // Consíguela en https://web3forms.com (registra hola@setnou.com) y pégala aquí.
+  const WEB3FORMS_KEY = "";
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -78,10 +82,30 @@ export function ContactModal() {
     };
   }
 
-  // Envío por WhatsApp (canal principal)
+  // Envía una copia del lead por email (Web3Forms). No bloquea el flujo.
+  function emailCopy(d: ReturnType<typeof getData>) {
+    if (!WEB3FORMS_KEY) return; // sin clave aún: se omite el email automático
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `Nuevo lead web — ${d.nombre}`,
+        from_name: "Web Setnou Studio",
+        cc: EMAIL_CC,
+        Nombre: d.nombre,
+        Teléfono: d.tel,
+        Email: d.email,
+        Empresa: d.empresa,
+      }),
+    }).catch(() => {});
+  }
+
+  // Botón principal: abre WhatsApp y manda copia por email
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const d = getData();
+    emailCopy(d);
     const msg = encodeURIComponent(
       `Hola Setnou 👋 Soy ${d.nombre}.\nTeléfono: ${d.tel}\nEmail: ${d.email}\n\nSobre mi empresa:\n${d.empresa}`
     );
@@ -89,7 +113,7 @@ export function ContactModal() {
     setSent(true);
   }
 
-  // Envío por email (alternativa)
+  // Alternativa: enviar por email (con copia a Cristian)
   function sendEmail() {
     const form = formRef.current;
     if (!form) return;
@@ -98,10 +122,11 @@ export function ContactModal() {
       return;
     }
     const d = getData();
+    emailCopy(d);
     const body = encodeURIComponent(
       `Nombre: ${d.nombre}\nTeléfono: ${d.tel}\nEmail: ${d.email}\n\nSobre la empresa:\n${d.empresa}`
     );
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+    window.location.href = `mailto:${EMAIL_TO}?cc=${EMAIL_CC}&subject=${encodeURIComponent(
       "Nuevo proyecto — " + d.nombre
     )}&body=${body}`;
     setSent(true);

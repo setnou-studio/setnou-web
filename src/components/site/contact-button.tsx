@@ -5,7 +5,7 @@
 export function ContactButton() {
   return (
     <a
-      href="https://wa.me/34674743999"
+      href="https://wa.me/34627411942"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp a Setnou Studio"
