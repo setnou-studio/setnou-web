@@ -19,7 +19,7 @@ const bricolage = Bricolage_Grotesque({
 });
 
 // Dominio canónico del sitio
-const SITE_URL = "https://setnou.studio";
+const SITE_URL = "https://setnoustudio.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

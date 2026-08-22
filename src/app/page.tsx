@@ -99,17 +99,49 @@ const MARQUEE = [
   "Tiendas online",
 ];
 
+const SITE = "https://setnoustudio.com";
+
+// Preguntas frecuentes (contenido real + FAQPage schema → clave para SEO y GEO/IA)
+const FAQS = [
+  {
+    q: "¿De verdad hacéis el diseño de la web gratis?",
+    a: "Sí. Diseñamos tu web sin coste inicial y solo la pagas si te gusta el resultado. Así eliminamos el riesgo para ti: ves el trabajo terminado antes de decidir.",
+  },
+  {
+    q: "¿Cuánto cuesta una página web con Setnou Studio?",
+    a: "El diseño lo haces sin adelantar nada; solo pagas si te convence. El precio final depende del alcance (número de páginas, tienda online, SEO), pero desde el día 1 sabes exactamente lo que vas a pagar, sin sorpresas ni letra pequeña.",
+  },
+  {
+    q: "¿Cuánto se tarda en tener la web lista?",
+    a: "Una web a medida suele estar lista en unas 2 semanas de media desde que tenemos los contenidos, dependiendo de la complejidad del proyecto.",
+  },
+  {
+    q: "¿Trabajáis solo en Barcelona?",
+    a: "Tenemos sede en Barcelona, pero trabajamos con clientes de toda España en remoto. Tienes acceso directo a las personas que hacen el trabajo, sin intermediarios.",
+  },
+  {
+    q: "¿La web incluye SEO para aparecer en Google?",
+    a: "Sí. Cada web se construye con una base técnica optimizada para SEO (velocidad, estructura, datos estructurados) y ofrecemos posicionamiento orgánico para que aparezcas donde te buscan tus clientes.",
+  },
+  {
+    q: "¿Qué necesito para empezar?",
+    a: "Solo contarnos de qué va tu empresa. Rellena el formulario o escríbenos por WhatsApp y en menos de 24 h te decimos los siguientes pasos. La primera consulta es gratis y sin compromiso.",
+  },
+];
+
 // Datos estructurados (Schema.org) para SEO local y rich results
 const JSON_LD = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": `${SITE}/#business`,
   name: "Setnou Studio",
   description:
     "Estudio de diseño web, SEO y estrategia digital en Barcelona. Webs a medida que convierten visitas en clientes.",
-  url: "https://setnou.studio",
+  url: SITE,
   email: "hola@setnou.com",
-  image: "https://setnou.studio/logo.svg",
-  logo: "https://setnou.studio/logo.svg",
+  telephone: "+34627411942",
+  image: `${SITE}/logo.svg`,
+  logo: `${SITE}/logo.svg`,
   priceRange: "€€",
   areaServed: { "@type": "Country", name: "España" },
   address: {
@@ -133,12 +165,27 @@ const JSON_LD = {
   slogan: "Tu web debería trabajar tanto como tú.",
 };
 
+// FAQPage schema (rich results en Google + citaciones en buscadores de IA)
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }}
       />
       <span id="top" />
       <Nav />
@@ -330,6 +377,39 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        {/* ════ FAQ ════ */}
+        <section id="faq" className="border-t-2 border-ink py-24 md:py-28">
+          <div className="mx-auto max-w-3xl px-5">
+            <div className="reveal mb-12">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-gold">
+                Preguntas frecuentes
+              </p>
+              <h2 className="font-display text-[clamp(2rem,5vw,3.25rem)] font-extrabold leading-[1.02] tracking-[-0.03em]">
+                Lo que sueles querer saber.
+              </h2>
+            </div>
+
+            <div className="flex flex-col">
+              {FAQS.map((f) => (
+                <details
+                  key={f.q}
+                  className="reveal group border-b-2 border-ink py-5 first:border-t-2"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-bold tracking-tight [&::-webkit-details-marker]:hidden">
+                    {f.q}
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full border-2 border-ink text-xl leading-none transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
