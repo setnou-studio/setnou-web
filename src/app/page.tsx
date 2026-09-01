@@ -82,6 +82,27 @@ const PROYECTOS = [
     url: "https://www.adnblaugrana.com",
     block: "bg-magenta",
   },
+  {
+    pill: "Diseño + SEO",
+    title: "Huecko",
+    desc: "Plataforma de reservas online para negocios que quieren llenar su agenda sin fricción.",
+    url: "https://huecko.com",
+    block: "bg-gold",
+  },
+  {
+    pill: "Diseño web",
+    title: "Surfmed",
+    desc: "Web de marca con una identidad visual cuidada y enfoque en conversión.",
+    url: "https://surfmed.com",
+    block: "bg-sky",
+  },
+  {
+    pill: "Diseño + SEO",
+    title: "Yude",
+    desc: "Web a medida rápida y limpia, optimizada para posicionar y captar clientes.",
+    url: "https://yude.com",
+    block: "bg-electric",
+  },
 ];
 
 const VALORES = [
