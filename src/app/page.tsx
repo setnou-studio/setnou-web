@@ -92,7 +92,7 @@ const PROYECTOS = [
   {
     pill: "Diseño web",
     title: "Surfmed",
-    desc: "Web de marca con una identidad visual cuidada y enfoque en conversión.",
+    desc: "Web de previsión de olas sencilla para saber de un vistazo cuándo y dónde surfear.",
     url: "https://surfmed.com",
     block: "bg-sky",
   },
