@@ -100,8 +100,15 @@ const PROYECTOS = [
     pill: "Diseño + SEO",
     title: "Yude",
     desc: "Web a medida rápida y limpia, optimizada para posicionar y captar clientes.",
-    url: "https://yude.com",
+    url: "https://yude.es",
     block: "bg-electric",
+  },
+  {
+    pill: "Diseño web",
+    title: "Hoyfit",
+    desc: "Web para un negocio de fitness y entrenamiento, con captación de clientes.",
+    url: "https://hoyfit.com",
+    block: "bg-magenta",
   },
 ];
 
