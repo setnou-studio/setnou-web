@@ -6,6 +6,8 @@ import { ContactModal, ContactTrigger } from "@/components/site/contact-modal";
 import { CookieConsent } from "@/components/site/cookie-consent";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { Logo } from "@/components/site/logo";
+import { GameSection } from "@/components/game/game-section";
+import { GameModal } from "@/components/game/game-modal";
 
 /* ── Datos (clases de color literales para que Tailwind las incluya) ── */
 const SERVICIOS = [
@@ -371,6 +373,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ════ El desafío: minijuego de marca ════ */}
+        <GameSection />
+
         {/* ════ Nosotros ════ */}
         <section id="nosotros" className="mx-auto max-w-6xl px-5 py-24 md:py-28">
           <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-20">
@@ -482,6 +487,7 @@ export default function Home() {
       <ScrollReveal />
       <ContactButton />
       <ContactModal />
+      <GameModal />
       <CookieConsent />
     </>
   );

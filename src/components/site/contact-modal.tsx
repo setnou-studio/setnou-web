@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { X, MessageCircle, Mail } from "lucide-react";
+import { X, MessageCircle, Mail, Gamepad2 } from "lucide-react";
+import { openGameModal } from "@/components/game/game-events";
 
 const EVENT = "setnou:open-contact";
 
@@ -175,6 +176,18 @@ export function ContactModal() {
               Hemos preparado tu mensaje con los datos. Termina de enviarlo en la
               ventana que se ha abierto y te contestamos enseguida.
             </p>
+
+            {/* El "mientras esperas": ya ha convertido, aquí solo se entretiene. */}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openGameModal("post-envio");
+              }}
+              className="btn-pop mt-6 inline-flex items-center gap-2 rounded-full bg-magenta px-6 py-3 text-sm font-semibold text-ink"
+            >
+              <Gamepad2 className="size-4" /> Juega 45 segundos mientras tanto
+            </button>
           </div>
         ) : (
           <>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Logo } from "@/components/site/logo";
 import { BriefingForm } from "@/components/site/briefing-form";
+import { GameModal } from "@/components/game/game-modal";
 
 export const metadata: Metadata = {
   title: "Briefing de tu proyecto",
@@ -60,6 +61,8 @@ export default function BriefingPage() {
           <p className="text-xs text-paper/50">© 2026 Setnou Studio · Barcelona</p>
         </div>
       </footer>
+
+      <GameModal />
     </>
   );
 }

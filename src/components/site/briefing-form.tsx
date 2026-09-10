@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Send, Check, ArrowLeft, Loader2, Globe, ShieldCheck } from "lucide-react";
+import { Send, Check, ArrowLeft, Loader2, Globe, ShieldCheck, Gamepad2 } from "lucide-react";
+import { openGameModal } from "@/components/game/game-events";
 
 /* ── Opciones de selección múltiple (chips) ── */
 const SECCIONES = [
@@ -180,12 +181,26 @@ export function BriefingForm() {
           Gracias por el detalle. Lo revisamos y te escribimos en menos de 24 h con
           los siguientes pasos.
         </p>
-        <a
-          href="/"
-          className="btn-pop mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-paper"
-        >
-          <ArrowLeft className="size-5" /> Volver al inicio
-        </a>
+
+        {/* El momento natural del "mientras esperas": ya ha convertido. */}
+        <p className="mt-8 font-display text-lg font-bold tracking-tight">
+          ¿Y mientras preparamos tu presupuesto?
+        </p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => openGameModal("post-envio")}
+            className="btn-pop inline-flex items-center gap-2 rounded-full bg-magenta px-7 py-3.5 text-base font-semibold text-ink"
+          >
+            <Gamepad2 className="size-5" /> Juega 45 segundos
+          </button>
+          <a
+            href="/"
+            className="btn-pop inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-paper"
+          >
+            <ArrowLeft className="size-5" /> Volver al inicio
+          </a>
+        </div>
       </div>
     );
   }
