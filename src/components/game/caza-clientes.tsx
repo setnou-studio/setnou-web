@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, RotateCcw } from "lucide-react";
-import { openContactModal } from "@/components/site/contact-modal";
+import { irAHablemos } from "@/components/site/hablemos-link";
 import {
   crearJuego, reiniciar, paso, palaY, restanteDe,
   DURACION, PALA_ANCHO, PALA_ALTO, BLOQUE, PALETA,
@@ -401,7 +401,7 @@ export default function CazaClientes({
                   {cierre.cta ? (
                     <button
                       type="button"
-                      onClick={() => openContactModal()}
+                      onClick={() => irAHablemos()}
                       className="btn-pop inline-flex items-center gap-2 rounded-full bg-magenta px-6 py-3 text-sm font-semibold text-ink"
                     >
                       {cierre.cta} <ArrowRight className="size-4" />

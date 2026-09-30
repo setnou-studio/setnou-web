@@ -2,7 +2,7 @@ import { Monitor, Search, Zap, LineChart, ArrowRight, ArrowUpRight } from "lucid
 import { Nav } from "@/components/site/nav";
 import { Stats } from "@/components/site/stats";
 import { ContactButton } from "@/components/site/contact-button";
-import { ContactModal, ContactTrigger } from "@/components/site/contact-modal";
+import { HablemosLink } from "@/components/site/hablemos-link";
 import { CookieConsent } from "@/components/site/cookie-consent";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { Logo } from "@/components/site/logo";
@@ -256,9 +256,9 @@ export default function Home() {
             </p>
 
             <div className="reveal mt-9 flex flex-wrap gap-4">
-              <ContactTrigger className="btn-pop inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-paper">
+              <HablemosLink className="btn-pop inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-paper">
                 Empecemos tu proyecto <ArrowRight className="size-5" />
-              </ContactTrigger>
+              </HablemosLink>
               <a href="#portfolio" className="btn-pop inline-flex items-center gap-2 rounded-full bg-paper px-7 py-3.5 text-base font-semibold text-ink">
                 Ver trabajos
               </a>
@@ -326,9 +326,9 @@ export default function Home() {
               diseño de tu web lo hacemos gratis. Lo ves, lo tocas y solo si te
               gusta, lo pagas. Así de simple.
             </p>
-            <ContactTrigger className="btn-pop inline-flex items-center gap-2 rounded-full bg-ink px-8 py-4 text-lg font-semibold text-paper">
+            <HablemosLink className="btn-pop inline-flex items-center gap-2 rounded-full bg-ink px-8 py-4 text-lg font-semibold text-paper">
               Quiero mi diseño gratis <ArrowRight className="size-5" />
-            </ContactTrigger>
+            </HablemosLink>
           </div>
         </section>
 
@@ -455,9 +455,9 @@ export default function Home() {
             <p className="max-w-md text-lg leading-relaxed text-paper/85">
               Cuéntanos qué necesitas. La primera consulta es gratis y sin compromiso.
             </p>
-            <ContactTrigger className="btn-pop inline-flex items-center gap-2 rounded-full bg-magenta px-8 py-4 text-lg font-semibold text-ink">
+            <HablemosLink className="btn-pop inline-flex items-center gap-2 rounded-full bg-magenta px-8 py-4 text-lg font-semibold text-ink">
               Hablemos <ArrowRight className="size-5" />
-            </ContactTrigger>
+            </HablemosLink>
           </div>
         </section>
       </main>
@@ -486,7 +486,6 @@ export default function Home() {
 
       <ScrollReveal />
       <ContactButton />
-      <ContactModal />
       <GameModal />
       <CookieConsent />
     </>

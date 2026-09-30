@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
-import { openContactModal } from "./contact-modal";
+import { HablemosLink } from "./hablemos-link";
 
 const LINKS = [
   { href: "#servicios", label: "Servicios" },
@@ -60,13 +60,9 @@ export function Nav() {
 
         {/* CTA + hamburger */}
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => openContactModal()}
-            className="btn-pop hidden rounded-full bg-magenta px-5 py-2.5 text-sm font-semibold text-ink md:inline-flex"
-          >
+          <HablemosLink className="btn-pop hidden rounded-full bg-magenta px-5 py-2.5 text-sm font-semibold text-ink md:inline-flex">
             Hablemos →
-          </button>
+          </HablemosLink>
 
           <button
             type="button"
@@ -103,16 +99,12 @@ export function Nav() {
           </li>
         ))}
         <li>
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              openContactModal();
-            }}
+          <HablemosLink
+            onClick={() => setOpen(false)}
             className="mt-2 inline-flex rounded-full bg-magenta px-5 py-2.5 text-sm font-semibold text-ink"
           >
             Hablemos →
-          </button>
+          </HablemosLink>
         </li>
       </ul>
     </nav>
