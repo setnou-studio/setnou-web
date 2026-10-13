@@ -354,11 +354,20 @@ export default function Home() {
                   aria-label={`Ver el proyecto ${p.title} (se abre en otra pestaña)`}
                   className="reveal card-pop group flex flex-col overflow-hidden rounded-2xl bg-card"
                 >
-                  <div className={`relative h-52 ${p.block}`}>
-                    <span className="absolute left-4 top-4 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink">
+                  <div
+                    className={`relative h-52 overflow-hidden border-b-2 border-ink bg-cover bg-top ${p.block}`}
+                    style={{
+                      backgroundImage: `url(https://s.wordpress.com/mshots/v1/${encodeURIComponent(
+                        p.url
+                      )}?w=900&h=700)`,
+                    }}
+                  >
+                    <span className="absolute left-4 top-4 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink shadow-sm">
                       {p.pill}
                     </span>
-                    <ArrowUpRight className="absolute bottom-4 right-4 size-7 text-paper transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <span className="absolute bottom-4 right-4 grid size-9 place-items-center rounded-full bg-ink text-paper transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                      <ArrowUpRight className="size-5" />
+                    </span>
                   </div>
                   <div className="flex flex-col gap-2 p-6">
                     <h3 className="font-display text-2xl font-bold tracking-tight">{p.title}</h3>
