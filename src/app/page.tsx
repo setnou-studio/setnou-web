@@ -1,4 +1,4 @@
-import { Monitor, Search, Zap, LineChart, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Monitor, Search, Zap, LineChart, ArrowRight } from "lucide-react";
 import { Nav } from "@/components/site/nav";
 import { Stats } from "@/components/site/stats";
 import { ContactButton } from "@/components/site/contact-button";
@@ -6,6 +6,7 @@ import { HablemosLink } from "@/components/site/hablemos-link";
 import { CookieConsent } from "@/components/site/cookie-consent";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { Logo } from "@/components/site/logo";
+import { PortfolioGrid } from "@/components/site/portfolio-grid";
 import { GameSection } from "@/components/game/game-section";
 import { GameModal } from "@/components/game/game-modal";
 
@@ -41,47 +42,21 @@ const SERVICIOS = [
   },
 ];
 
+// Ordenados de más a menos vistosa. Las 9 primeras se muestran siempre;
+// el resto aparece al pulsar "Ver más".
 const PROYECTOS = [
-  {
-    pill: "Diseño + SEO",
-    title: "Jenifer Martínez",
-    desc: "Web de marca personal con captación de clientes y posicionamiento local.",
-    url: "https://www.jenifermartinez.com",
-    block: "bg-electric",
-  },
-  {
-    pill: "Diseño web",
-    title: "Residència Jardí Xerta",
-    desc: "Web para una nueva residencia geriátrica en las Terres de l'Ebre, con captación de futuros residentes.",
-    url: "https://residenciajardidexerta.com",
-    block: "bg-magenta",
-  },
   {
     pill: "Diseño + SEO",
     title: "Projecting",
     desc: "Web corporativa para un estudio de proyectos de ingeniería y construcción.",
     url: "https://www.projecting.es",
-    block: "bg-gold",
-  },
-  {
-    pill: "Diseño web",
-    title: "Sunset Energía",
-    desc: "Web para una empresa de energía solar y eficiencia energética.",
-    url: "https://www.sunsetenergia.com",
-    block: "bg-sky",
-  },
-  {
-    pill: "Diseño + SEO",
-    title: "Caza Facturas",
-    desc: "Web para un servicio de ahorro y comparación de facturas.",
-    url: "https://www.cazafacturas.com",
     block: "bg-electric",
   },
   {
-    pill: "Diseño web",
-    title: "ADN Blaugrana",
-    desc: "Web de contenido y comunidad para aficionados al fútbol.",
-    url: "https://www.adnblaugrana.com",
+    pill: "Diseño + SEO",
+    title: "Jenifer Martínez",
+    desc: "Web de marca personal con captación de clientes y posicionamiento local.",
+    url: "https://www.jenifermartinez.com",
     block: "bg-magenta",
   },
   {
@@ -93,9 +68,37 @@ const PROYECTOS = [
   },
   {
     pill: "Diseño web",
+    title: "Residència Jardí de Xerta",
+    desc: "Web para una nueva residencia geriátrica en las Terres de l'Ebre, con captación de futuros residentes.",
+    url: "https://residenciajardidexerta.com",
+    block: "bg-sky",
+  },
+  {
+    pill: "Diseño web",
+    title: "Sunset Energía",
+    desc: "Web para una empresa de energía solar y eficiencia energética.",
+    url: "https://www.sunsetenergia.com",
+    block: "bg-electric",
+  },
+  {
+    pill: "Diseño + SEO",
+    title: "Caza Facturas",
+    desc: "Web para un servicio de ahorro y comparación de facturas.",
+    url: "https://www.cazafacturas.com",
+    block: "bg-magenta",
+  },
+  {
+    pill: "Diseño web",
+    title: "ADN Blaugrana",
+    desc: "Web de contenido y comunidad para aficionados al fútbol.",
+    url: "https://www.adnblaugrana.com",
+    block: "bg-gold",
+  },
+  {
+    pill: "Diseño web",
     title: "Surfmed",
     desc: "Web de previsión de olas sencilla para saber de un vistazo cuándo y dónde surfear.",
-    url: "https://surfmed.com",
+    url: "https://surfmed.es",
     block: "bg-sky",
   },
   {
@@ -344,41 +347,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {PROYECTOS.map((p) => (
-                <a
-                  key={p.title}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Ver el proyecto ${p.title} (se abre en otra pestaña)`}
-                  className="reveal card-pop group flex flex-col overflow-hidden rounded-2xl bg-card"
-                >
-                  <div
-                    className={`relative h-52 overflow-hidden border-b-2 border-ink bg-cover bg-top ${p.block}`}
-                    style={{
-                      backgroundImage: `url(https://s.wordpress.com/mshots/v1/${encodeURIComponent(
-                        p.url
-                      )}?w=900&h=700)`,
-                    }}
-                  >
-                    <span className="absolute left-4 top-4 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink shadow-sm">
-                      {p.pill}
-                    </span>
-                    <span className="absolute bottom-4 right-4 grid size-9 place-items-center rounded-full bg-ink text-paper transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                      <ArrowUpRight className="size-5" />
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-2 p-6">
-                    <h3 className="font-display text-2xl font-bold tracking-tight">{p.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                    <span className="mt-1 text-sm font-semibold text-electric">
-                      {p.url.replace("https://", "")}
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
+            <PortfolioGrid projects={PROYECTOS} />
           </div>
         </section>
 
