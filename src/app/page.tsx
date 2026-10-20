@@ -52,8 +52,8 @@ const PROYECTOS = [
   {
     pill: "Diseño web",
     title: "Residència Jardí Xerta",
-    desc: "Web para una residencia geriátrica con información de servicios e instalaciones.",
-    url: "https://www.residenciajardixerta.com",
+    desc: "Web para una nueva residencia geriátrica en las Terres de l'Ebre, con captación de futuros residentes.",
+    url: "https://residenciajardidexerta.com",
     block: "bg-magenta",
   },
   {
