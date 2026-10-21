@@ -42,7 +42,7 @@ const SERVICIOS = [
   },
 ];
 
-// Ordenados de más a menos vistosa. Las 9 primeras se muestran siempre;
+// Orden definido por Setnou. Las 9 primeras se muestran siempre;
 // el resto aparece al pulsar "Ver más".
 const PROYECTOS = [
   {
@@ -53,17 +53,17 @@ const PROYECTOS = [
     block: "bg-electric",
   },
   {
-    pill: "Diseño + SEO",
-    title: "Jenifer Martínez",
-    desc: "Web de marca personal con captación de clientes y posicionamiento local.",
-    url: "https://www.jenifermartinez.com",
+    pill: "Diseño web",
+    title: "Sunset Energía",
+    desc: "Web para una empresa de energía solar y eficiencia energética.",
+    url: "https://www.sunsetenergia.com",
     block: "bg-magenta",
   },
   {
-    pill: "Diseño + SEO",
-    title: "Huecko",
-    desc: "Plataforma de reservas online para negocios que quieren llenar su agenda sin fricción.",
-    url: "https://huecko.com",
+    pill: "Diseño web",
+    title: "Hoyfit",
+    desc: "Web para un negocio de fitness y entrenamiento, con captación de clientes.",
+    url: "https://hoyfit.com",
     block: "bg-gold",
   },
   {
@@ -74,10 +74,38 @@ const PROYECTOS = [
     block: "bg-sky",
   },
   {
+    pill: "Diseño + SEO",
+    title: "Huecko",
+    desc: "Plataforma de reservas online para negocios que quieren llenar su agenda sin fricción.",
+    url: "https://huecko.com",
+    block: "bg-electric",
+  },
+  {
+    pill: "Diseño + SEO",
+    title: "Yude",
+    desc: "Web a medida rápida y limpia, optimizada para posicionar y captar clientes.",
+    url: "https://yude.es",
+    block: "bg-magenta",
+  },
+  {
+    pill: "Diseño + SEO",
+    title: "Jenifer Martínez",
+    desc: "Web de marca personal con captación de clientes y posicionamiento local.",
+    url: "https://www.jenifermartinez.com",
+    block: "bg-gold",
+  },
+  {
     pill: "Diseño web",
-    title: "Sunset Energía",
-    desc: "Web para una empresa de energía solar y eficiencia energética.",
-    url: "https://www.sunsetenergia.com",
+    title: "ADN Blaugrana",
+    desc: "Web de contenido y comunidad para aficionados al fútbol.",
+    url: "https://www.adnblaugrana.com",
+    block: "bg-sky",
+  },
+  {
+    pill: "Diseño web",
+    title: "Surfmed",
+    desc: "Web de previsión de olas sencilla para saber de un vistazo cuándo y dónde surfear.",
+    url: "https://surfmed.es",
     block: "bg-electric",
   },
   {
@@ -89,31 +117,17 @@ const PROYECTOS = [
   },
   {
     pill: "Diseño web",
-    title: "ADN Blaugrana",
-    desc: "Web de contenido y comunidad para aficionados al fútbol.",
-    url: "https://www.adnblaugrana.com",
+    title: "Viva Casing",
+    desc: "Web para un fabricante familiar de tripas para embutido (natural y artificial) con sede en Barcelona.",
+    url: "https://vivacasing.com",
     block: "bg-gold",
   },
   {
-    pill: "Diseño web",
-    title: "Surfmed",
-    desc: "Web de previsión de olas sencilla para saber de un vistazo cuándo y dónde surfear.",
-    url: "https://surfmed.es",
-    block: "bg-sky",
-  },
-  {
     pill: "Diseño + SEO",
-    title: "Yude",
-    desc: "Web a medida rápida y limpia, optimizada para posicionar y captar clientes.",
-    url: "https://yude.es",
-    block: "bg-electric",
-  },
-  {
-    pill: "Diseño web",
-    title: "Hoyfit",
-    desc: "Web para un negocio de fitness y entrenamiento, con captación de clientes.",
-    url: "https://hoyfit.com",
-    block: "bg-magenta",
+    title: "Clínica La Huella",
+    desc: "Web para una clínica de podología: estudios biomecánicos, pie diabético, pediatría y cirugía.",
+    url: "https://clinicalahuella.com",
+    block: "bg-sky",
   },
 ];
 
