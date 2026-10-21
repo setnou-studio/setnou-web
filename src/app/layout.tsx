@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@/components/site/analytics";
 
 // Cuerpo / UI
 const inter = Inter({
@@ -19,7 +20,7 @@ const bricolage = Bricolage_Grotesque({
 });
 
 // Dominio canónico del sitio
-const SITE_URL = "https://setnoustudio.com";
+const SITE_URL = "https://www.setnoustudio.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · Setnou Studio",
   },
   description:
-    "Estudio de diseño web en Barcelona. Creamos webs con actitud que convierten visitas en clientes y posicionan tu marca en Google. El diseño de tu web, gratis: solo pagas si te gusta.",
+    "Estudio de diseño web en Barcelona. Creamos webs con actitud que convierten visitas en clientes y posicionan tu marca en Google.",
   keywords: [
     "diseño web Barcelona",
     "estudio de diseño web",
@@ -55,13 +56,13 @@ export const metadata: Metadata = {
     siteName: "Setnou Studio",
     title: "Setnou Studio — Diseño web, SEO y estrategia digital en Barcelona",
     description:
-      "Webs con actitud que convierten visitas en clientes. El diseño de tu web, gratis: solo pagas si te gusta.",
+      "Webs con actitud que convierten visitas en clientes y posicionan tu marca en Google.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Setnou Studio — Diseño web atrevido en Barcelona",
     description:
-      "Webs que convierten visitas en clientes. El diseño de tu web, gratis: solo pagas si te gusta.",
+      "Webs que convierten visitas en clientes y posicionan tu marca.",
   },
   robots: {
     index: true,
@@ -95,7 +96,10 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} ${bricolage.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

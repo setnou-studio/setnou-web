@@ -12,8 +12,10 @@
 // El briefing es una acción de envío: nunca cachear.
 export const dynamic = "force-dynamic";
 
+// Apuntamos directo a app.yude.es: crm.setnou.com redirige allí y, en el
+// redirect, fetch descarta la cabecera Authorization (se perdía la clave).
 const CRM_URL =
-  process.env["CRM_BRIEFING_URL"] ?? "https://crm.setnou.com/api/briefings";
+  process.env["CRM_BRIEFING_URL"] ?? "https://app.yude.es/api/briefings";
 
 export async function POST(req: Request) {
   const token = process.env["CRM_BRIEFING_TOKEN"];
@@ -31,6 +33,15 @@ export async function POST(req: Request) {
       { status: 400 },
     );
   }
+
+  // Antispam (honeypot): un bot rellena el campo oculto "website".
+  // Respondemos OK para no darle pistas, pero no reenviamos nada al CRM.
+  if (typeof (datos as { website?: unknown }).website === "string" &&
+      (datos as { website: string }).website.trim() !== "") {
+    return Response.json({ ok: true }, { status: 200 });
+  }
+  // El honeypot no debe viajar al CRM.
+  delete (datos as { website?: unknown }).website;
 
   let r: Response;
   try {

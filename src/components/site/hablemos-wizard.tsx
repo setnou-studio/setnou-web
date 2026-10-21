@@ -13,6 +13,7 @@ import {
   Send,
 } from "lucide-react";
 import { openGameModal } from "@/components/game/game-events";
+import { track } from "@/components/site/analytics";
 
 /* ── Opciones ── */
 
@@ -168,6 +169,11 @@ export function HablemosWizard() {
       return;
     }
 
+    // Honeypot antispam: si viene relleno, lo rellenó un bot.
+    const honeypot =
+      (form?.querySelector('input[name="website"]') as HTMLInputElement | null)
+        ?.value ?? "";
+
     const estilo = ESTILOS.find((x) => x.id === d.estilo);
     const paleta = PALETAS.find((x) => x.id === d.paleta);
     const dominio =
@@ -202,6 +208,7 @@ export function HablemosWizard() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
+          website: honeypot,
           nombreContacto: d.nombre.trim(),
           email: d.email.trim(),
           telefono: d.telefono.trim() || undefined,
@@ -210,6 +217,7 @@ export function HablemosWizard() {
         }),
       });
       if (res.ok) {
+        track("generar_lead", { metodo: "asistente" });
         setEstado("ok");
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
@@ -236,7 +244,7 @@ export function HablemosWizard() {
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Ya tenemos la idea de {d.empresa.trim()}. Te escribimos en menos de 24 h
-            con una propuesta de diseño, gratis y sin compromiso.
+            con una propuesta de diseño a medida, sin compromiso.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <button
@@ -514,6 +522,28 @@ export function HablemosWizard() {
           </p>
         )}
 
+        {/* Honeypot antispam: oculto para personas, tentador para bots */}
+        <div aria-hidden style={{ position: "absolute", left: "-9999px", top: "-9999px", width: 0, height: 0, overflow: "hidden" }}>
+          <label>
+            No rellenar
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          </label>
+        </div>
+
+        {/* Consentimiento de privacidad (solo en el último paso) */}
+        {ultimo && (
+          <label className="flex items-start gap-3 text-sm text-muted-foreground">
+            <input type="checkbox" name="privacidad" required className="mt-1 size-4 shrink-0 accent-magenta" />
+            <span>
+              He leído y acepto la{" "}
+              <a href="/privacidad" target="_blank" className="font-medium text-electric underline underline-offset-2">
+                política de privacidad
+              </a>
+              .
+            </span>
+          </label>
+        )}
+
         {/* Navegación */}
         <div className="flex items-center justify-between gap-3">
           {paso > 0 ? (
@@ -546,9 +576,10 @@ export function HablemosWizard() {
         </div>
 
         <a
-          href={`https://wa.me/${WHATSAPP}`}
+          href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, vengo de la web")}`}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => track("contacto_whatsapp", { lugar: "asistente" })}
           className="inline-flex items-center gap-1.5 self-center text-sm font-medium text-muted-foreground underline-offset-4 hover:text-ink hover:underline"
         >
           <MessageCircle className="size-4" /> ¿Prefieres hablar por WhatsApp?
