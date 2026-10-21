@@ -95,6 +95,13 @@ const PROYECTOS = [
     block: "bg-gold",
   },
   {
+    pill: "Diseño + SEO",
+    title: "Mediled Solar",
+    desc: "Web para un instalador de placas solares en Barcelona, para hogares, empresas y comunidades.",
+    url: "https://mediled-solar.vercel.app",
+    block: "bg-sky",
+  },
+  {
     pill: "Diseño web",
     title: "ADN Blaugrana",
     desc: "Web de contenido y comunidad para aficionados al fútbol.",
@@ -128,6 +135,13 @@ const PROYECTOS = [
     desc: "Web para una clínica de podología: estudios biomecánicos, pie diabético, pediatría y cirugía.",
     url: "https://clinicalahuella.com",
     block: "bg-sky",
+  },
+  {
+    pill: "Diseño + SEO",
+    title: "Mediled Reformas",
+    desc: "Web para una empresa de reformas integrales de locales y viviendas en Barcelona y L'Hospitalet.",
+    url: "https://mediled-web.vercel.app",
+    block: "bg-gold",
   },
 ];
 
