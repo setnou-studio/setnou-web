@@ -9,7 +9,7 @@ import Script from "next/script";
  *   gtag('consent','update',...) para activar la medición.
  * - Solo se carga si existe NEXT_PUBLIC_GA_ID (configúralo en Vercel).
  */
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-8HHEK238TT";
 
 /** Registra un evento en GA4 si está cargado (no hace nada si no). */
 export function track(event: string, params?: Record<string, unknown>) {
