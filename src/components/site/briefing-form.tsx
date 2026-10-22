@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Send, Check, ArrowLeft, Loader2, Globe, ShieldCheck, Gamepad2 } from "lucide-react";
 import { openGameModal } from "@/components/game/game-events";
+import { track } from "@/components/site/analytics";
 
 /* ── Opciones de selección múltiple (chips) ── */
 const SECCIONES = [
@@ -125,6 +126,8 @@ export function BriefingForm() {
           : dominio;
 
     const payload = {
+      // Honeypot antispam: si viene relleno, lo rellenó un bot.
+      website: texto("website"),
       nombreContacto: texto("nombre"),
       email: texto("email"),
       telefono: texto("telefono") || undefined,
@@ -154,6 +157,7 @@ export function BriefingForm() {
         body: JSON.stringify(payload),
       });
       if (res.ok) {
+        track("generar_lead", { metodo: "briefing" });
         setEstado("ok");
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
@@ -388,6 +392,26 @@ export function BriefingForm() {
 
       {/* Envío */}
       <div className="flex flex-col gap-4 border-t-2 border-ink pt-8">
+        {/* Honeypot antispam: oculto para personas, tentador para bots */}
+        <div aria-hidden className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden" style={{ position: "absolute" }}>
+          <label>
+            No rellenar
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          </label>
+        </div>
+
+        {/* Consentimiento de privacidad */}
+        <label className="flex items-start gap-3 text-sm text-muted-foreground">
+          <input type="checkbox" name="privacidad" required className="mt-1 size-4 shrink-0 accent-magenta" />
+          <span>
+            He leído y acepto la{" "}
+            <a href="/privacidad" target="_blank" className="font-medium text-electric underline underline-offset-2">
+              política de privacidad
+            </a>
+            .
+          </span>
+        </label>
+
         {estado === "error" && (
           <p role="alert" className="rounded-xl border-2 border-destructive bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">
             {mensajeError}

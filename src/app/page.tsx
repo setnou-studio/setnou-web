@@ -3,7 +3,7 @@ import { Nav } from "@/components/site/nav";
 import { Stats } from "@/components/site/stats";
 import { ContactButton } from "@/components/site/contact-button";
 import { HablemosLink } from "@/components/site/hablemos-link";
-import { CookieConsent } from "@/components/site/cookie-consent";
+import { CookieConsent, CookiePrefsButton } from "@/components/site/cookie-consent";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { Logo } from "@/components/site/logo";
 import { PortfolioGrid } from "@/components/site/portfolio-grid";
@@ -160,17 +160,17 @@ const MARQUEE = [
   "Tiendas online",
 ];
 
-const SITE = "https://setnoustudio.com";
+const SITE = "https://www.setnoustudio.com";
 
 // Preguntas frecuentes (contenido real + FAQPage schema → clave para SEO y GEO/IA)
 const FAQS = [
   {
-    q: "¿De verdad hacéis el diseño de la web gratis?",
-    a: "Sí. Diseñamos tu web sin coste inicial y solo la pagas si te gusta el resultado. Así eliminamos el riesgo para ti: ves el trabajo terminado antes de decidir.",
+    q: "¿Cómo es el proceso para empezar?",
+    a: "Nos cuentas tu negocio, estudiamos tu sector y te preparamos una propuesta a medida. Una vez la apruebas, diseñamos y publicamos tu web, con acceso directo a quien hace el trabajo en todo momento.",
   },
   {
     q: "¿Cuánto cuesta una página web con Setnou Studio?",
-    a: "El diseño lo haces sin adelantar nada; solo pagas si te convence. El precio final depende del alcance (número de páginas, tienda online, SEO), pero desde el día 1 sabes exactamente lo que vas a pagar, sin sorpresas ni letra pequeña.",
+    a: "El precio depende del alcance (número de páginas, tienda online, SEO), pero desde el día 1 sabes exactamente lo que vas a pagar, sin sorpresas ni letra pequeña.",
   },
   {
     q: "¿Cuánto se tarda en tener la web lista?",
@@ -186,7 +186,7 @@ const FAQS = [
   },
   {
     q: "¿Qué necesito para empezar?",
-    a: "Solo contarnos de qué va tu empresa. Rellena el formulario o escríbenos por WhatsApp y en menos de 24 h te decimos los siguientes pasos. La primera consulta es gratis y sin compromiso.",
+    a: "Solo contarnos de qué va tu empresa. Rellena el formulario o escríbenos por WhatsApp y en menos de 24 h te decimos los siguientes pasos. Sin compromiso.",
   },
 ];
 
@@ -218,11 +218,6 @@ const JSON_LD = {
     "Estrategia digital",
     "Tiendas online",
   ],
-  makesOffer: {
-    "@type": "Offer",
-    name: "Diseño web sin riesgo",
-    description: "El diseño de tu web, gratis. Solo pagas si te gusta.",
-  },
   slogan: "Tu web debería trabajar tanto como tú.",
 };
 
@@ -339,26 +334,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ════ Oferta destacada: diseño gratis ════ */}
+        {/* ════ Banda de valor ════ */}
         <section className="border-y-2 border-ink bg-magenta text-ink">
           <div className="mx-auto flex max-w-6xl flex-col items-start gap-7 px-5 py-20 md:py-24">
             <span className="reveal inline-flex items-center gap-2 rounded-full border-2 border-ink px-4 py-1.5 text-sm font-semibold">
               <span className="size-2 rounded-full bg-ink" />
-              Sin riesgo para ti
+              Hecho a medida
             </span>
             <h2 className="reveal max-w-4xl font-display text-[clamp(2.5rem,7vw,4.75rem)] font-extrabold leading-[0.98] tracking-[-0.03em]">
-              El diseño de tu web,{" "}
+              Tu web lista para{" "}
               <span className="highlight inline-block rounded-md bg-ink text-paper">
-                gratis.
+                convertir.
               </span>
             </h2>
             <p className="reveal max-w-2xl text-lg leading-relaxed text-ink/80 md:text-xl">
-              Estamos tan seguros de que te va a encantar nuestro trabajo que el
-              diseño de tu web lo hacemos gratis. Lo ves, lo tocas y solo si te
-              gusta, lo pagas. Así de simple.
+              Diseño a medida, SEO desde el primer día y acceso directo a quien
+              hace el trabajo. Sin plantillas, sin intermediarios y con precios
+              claros desde el principio.
             </p>
             <HablemosLink className="btn-pop inline-flex items-center gap-2 rounded-full bg-ink px-8 py-4 text-lg font-semibold text-paper">
-              Quiero mi diseño gratis <ArrowRight className="size-5" />
+              Empecemos tu proyecto <ArrowRight className="size-5" />
             </HablemosLink>
           </div>
         </section>
@@ -459,7 +454,7 @@ export default function Home() {
               ¿Tienes un proyecto en mente?
             </h2>
             <p className="max-w-md text-lg leading-relaxed text-paper/85">
-              Cuéntanos qué necesitas. La primera consulta es gratis y sin compromiso.
+              Cuéntanos qué necesitas y te respondemos en menos de 24 h. Sin compromiso.
             </p>
             <HablemosLink className="btn-pop inline-flex items-center gap-2 rounded-full bg-magenta px-8 py-4 text-lg font-semibold text-ink">
               Hablemos <ArrowRight className="size-5" />
@@ -478,12 +473,18 @@ export default function Home() {
               <a href="#portfolio" className="transition-colors hover:text-magenta">Portfolio</a>
               <a href="#nosotros" className="transition-colors hover:text-magenta">Nosotros</a>
               <a href="mailto:hola@setnou.com" className="transition-colors hover:text-magenta">hola@setnou.com</a>
+              <a href="tel:+34627411942" className="transition-colors hover:text-magenta">+34 627 41 19 42</a>
             </nav>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-paper/50">
-            <p>© 2026 Setnou Studio · Barcelona</p>
+            <nav aria-label="Enlaces legales" className="flex flex-wrap gap-5">
+              <a href="/aviso-legal" className="transition-colors hover:text-magenta">Aviso legal</a>
+              <a href="/privacidad" className="transition-colors hover:text-magenta">Privacidad</a>
+              <a href="/cookies" className="transition-colors hover:text-magenta">Cookies</a>
+              <CookiePrefsButton />
+            </nav>
             <p className="flex items-center gap-2">
-              Hecho con actitud
+              © 2026 Setnou Studio · Barcelona
               <span className="size-2 rounded-full bg-magenta" />
             </p>
           </div>

@@ -1,3 +1,7 @@
+"use client";
+
+import { track } from "@/components/site/analytics";
+
 /**
  * Botón flotante de WhatsApp.
  * Abre WhatsApp directamente al pulsarlo (sin desplegar menú).
@@ -5,10 +9,11 @@
 export function ContactButton() {
   return (
     <a
-      href="https://wa.me/34627411942"
+      href="https://wa.me/34627411942?text=Hola,%20vengo%20de%20la%20web"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp a Setnou Studio"
+      onClick={() => track("contacto_whatsapp", { lugar: "boton_flotante" })}
       className="btn-pop fixed bottom-6 right-6 z-50 flex size-16 items-center justify-center rounded-2xl bg-magenta text-ink"
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="size-8 -scale-x-100 -scale-y-100" aria-hidden="true">

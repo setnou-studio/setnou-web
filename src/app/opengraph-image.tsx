@@ -50,7 +50,7 @@ export default function OgImage() {
 
         {/* Pie */}
         <div style={{ display: "flex", fontSize: 28, fontWeight: 600, color: "#0075FF" }}>
-          El diseño de tu web, gratis. Solo pagas si te gusta.
+          Webs con actitud que convierten visitas en clientes.
         </div>
       </div>
     ),

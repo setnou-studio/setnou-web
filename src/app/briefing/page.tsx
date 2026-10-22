@@ -3,13 +3,25 @@ import { Logo } from "@/components/site/logo";
 import { BriefingForm } from "@/components/site/briefing-form";
 import { GameModal } from "@/components/game/game-modal";
 
+const BRIEFING_DESC =
+  "Cuéntanos los detalles de tu proyecto web. Cuanto más nos cuentes, mejor será la propuesta. Te respondemos en menos de 24 h.";
+
 export const metadata: Metadata = {
   title: "Briefing de tu proyecto",
-  description:
-    "Cuéntanos los detalles de tu proyecto web. Cuanto más nos cuentes, mejor será la propuesta. Te respondemos en menos de 24 h.",
+  description: BRIEFING_DESC,
   alternates: { canonical: "/briefing" },
   // Página de captación privada: fuera del índice de buscadores.
   robots: { index: false, follow: false },
+  openGraph: {
+    title: "Briefing de tu proyecto · Setnou Studio",
+    description: BRIEFING_DESC,
+    url: "/briefing",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Briefing de tu proyecto · Setnou Studio",
+    description: BRIEFING_DESC,
+  },
 };
 
 export default function BriefingPage() {
