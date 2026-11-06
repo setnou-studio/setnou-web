@@ -13,7 +13,29 @@ export type Proyecto = {
 
 const VISIBLE = 9; // nº de proyectos mostrados antes de "Ver más"
 
+// Captura local de la home de cada web (guardada en /public/portfolio).
+// Así la vista previa es nuestra y va siempre, sin depender de servicios externos.
+const SHOT: Record<string, string> = {
+  "https://www.projecting.es": "/portfolio/projecting.jpg",
+  "https://www.sunsetenergia.com": "/portfolio/sunset.jpg",
+  "https://hoyfit.com": "/portfolio/hoyfit.jpg",
+  "https://residenciajardidexerta.com": "/portfolio/residencia.jpg",
+  "https://huecko.com": "/portfolio/huecko.jpg",
+  "https://yude.es": "/portfolio/yude.jpg",
+  "https://www.jenifermartinez.com": "/portfolio/jenifer.jpg",
+  "https://mediled-solar.vercel.app": "/portfolio/mediled-solar.jpg",
+  "https://www.adnblaugrana.com": "/portfolio/adn-blaugrana.jpg",
+  "https://surfmed.es": "/portfolio/surfmed.jpg",
+  "https://www.cazafacturas.com": "/portfolio/cazafacturas.jpg",
+  "https://vivacasing.com": "/portfolio/vivacasing.jpg",
+  "https://clinicalahuella.com": "/portfolio/clinica-huella.jpg",
+  "https://mediled-web.vercel.app": "/portfolio/mediled-reformas.jpg",
+};
+
 function Card({ p }: { p: Proyecto }) {
+  const shot =
+    SHOT[p.url] ??
+    `https://s.wordpress.com/mshots/v1/${encodeURIComponent(p.url)}?w=900&h=700`;
   return (
     <a
       href={p.url}
@@ -24,11 +46,7 @@ function Card({ p }: { p: Proyecto }) {
     >
       <div
         className={`relative h-52 overflow-hidden border-b-2 border-ink bg-cover bg-top ${p.block}`}
-        style={{
-          backgroundImage: `url(https://s.wordpress.com/mshots/v1/${encodeURIComponent(
-            p.url
-          )}?w=900&h=700)`,
-        }}
+        style={{ backgroundImage: `url(${shot})` }}
       >
         <span className="absolute left-4 top-4 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink shadow-sm">
           {p.pill}
