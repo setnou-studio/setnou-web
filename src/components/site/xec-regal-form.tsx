@@ -84,7 +84,7 @@ export function XecRegalForm() {
         <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
           Hem rebut les teves dades. Ens posarem en contacte amb tu aviat per començar la teva web.
           Si vols afegir alguna cosa, escriu-nos a{" "}
-          <a href="mailto:hola@setnou.com" className="font-medium text-electric underline underline-offset-2">hola@setnou.com</a>.
+          <a href="mailto:cristian@setnou.com" className="font-medium text-electric underline underline-offset-2">cristian@setnou.com</a>.
         </p>
       </div>
     );

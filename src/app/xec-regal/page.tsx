@@ -47,8 +47,8 @@ export default function XecRegalPage() {
             <span className="highlight inline-block rounded-md bg-magenta text-ink">una pàgina web.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            El teu xec regal val per una pàgina web a mida de Setnou Studio, valorada en 800 €.
-            Bescanvia’l aquí en dos passos i ens posarem en contacte amb tu per començar.
+            El teu xec regal val per una pàgina web feta a mida per al teu negoci o per a tu, valorada
+            en 800 €. Bescanvia’l aquí en dos passos i ens posarem en contacte amb tu per començar.
           </p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {INCLOU.map((i) => (

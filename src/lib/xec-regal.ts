@@ -75,7 +75,7 @@ export function validaXec(
 }
 
 export const MISSATGES: Record<Exclude<Validacio, { ok: true }>["motiu"], string> = {
-  no_configurat: "El bescanvi encara no està actiu. Torna-ho a provar més tard o escriu-nos a hola@setnou.com.",
+  no_configurat: "El bescanvi encara no està actiu. Torna-ho a provar més tard o escriu-nos a cristian@setnou.com.",
   caducat: "Aquest xec es podia bescanviar fins al 30-06-2027.",
   dades: "Revisa el número de butlleta i el codi del xec.",
   incorrecte: "El número de butlleta o el codi del xec no són correctes.",

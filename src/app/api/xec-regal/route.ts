@@ -57,7 +57,7 @@ export async function POST(req: Request) {
   }
   if (!r.ok) {
     console.error("xec-regal: Yude respondió", r.status, await r.text().catch(() => ""));
-    return error("No hem pogut enviar les dades. Torna-ho a provar o escriu-nos a hola@setnou.com.", 502);
+    return error("No hem pogut enviar les dades. Torna-ho a provar o escriu-nos a cristian@setnou.com.", 502);
   }
   return Response.json({ ok: true });
 }
