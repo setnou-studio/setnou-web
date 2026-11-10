@@ -6,7 +6,7 @@ export const TITULAR = {
   nombre: "SETNOU GLOBAL GROUP, S.L.",
   nif: "B26916726",
   direccion: "C/ Casanova 48, ático 2, 08011 Barcelona",
-  email: "hola@setnou.com",
+  email: "cristian@setnou.com",
   web: "https://www.setnoustudio.com",
 };
 

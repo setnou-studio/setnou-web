@@ -199,7 +199,7 @@ const JSON_LD = {
   description:
     "Estudio de diseño web, SEO y estrategia digital en Barcelona. Webs a medida que convierten visitas en clientes.",
   url: SITE,
-  email: "hola@setnou.com",
+  email: "cristian@setnou.com",
   telephone: "+34627411942",
   image: `${SITE}/logo.svg`,
   logo: `${SITE}/logo.svg`,
@@ -472,7 +472,7 @@ export default function Home() {
               <a href="#servicios" className="transition-colors hover:text-magenta">Servicios</a>
               <a href="#portfolio" className="transition-colors hover:text-magenta">Portfolio</a>
               <a href="#nosotros" className="transition-colors hover:text-magenta">Nosotros</a>
-              <a href="mailto:hola@setnou.com" className="transition-colors hover:text-magenta">hola@setnou.com</a>
+              <a href="mailto:cristian@setnou.com" className="transition-colors hover:text-magenta">cristian@setnou.com</a>
               <a href="tel:+34627411942" className="transition-colors hover:text-magenta">+34 627 41 19 42</a>
             </nav>
           </div>
